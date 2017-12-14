@@ -1,0 +1,6 @@
+framework module Pods_ScrollableCollectionView {
+  umbrella header "Pods-ScrollableCollectionView-umbrella.h"
+
+  export *
+  module * { export * }
+}

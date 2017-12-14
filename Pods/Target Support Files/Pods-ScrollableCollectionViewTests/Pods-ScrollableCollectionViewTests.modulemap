@@ -1,0 +1,6 @@
+framework module Pods_ScrollableCollectionViewTests {
+  umbrella header "Pods-ScrollableCollectionViewTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
