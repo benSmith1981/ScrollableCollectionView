@@ -18,17 +18,19 @@ extension  DetailmageSliderCell {
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return (images?.count)!
+        return (weatherForecast?.count)!
     }
 
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "imageCellID",for: indexPath) as! ImageSliderCollectionViewCell
         
-        let imageString = images?[indexPath.row]
-        let url = URL(string: (imageString)!)
+        let weather = weatherForecast?[indexPath.row]
+        let url = URL(string: (weather?.imageURLString)!)
  
         cell.imageVIew.kf.setImage(with: url)
+        
+        cell.titleLabel.text = weather?.temperature
         
         cell.layer.shadowColor = UIColor.black.cgColor
         cell.layer.shadowOpacity = 0.30

@@ -15,7 +15,7 @@ class DetailmageSliderCell: UITableViewCell,
 
     @IBOutlet var collectionView: UICollectionView!
     
-    var images:[String]?
+    var weatherForecast:[Weather]?
     
     /// TODO: GET INT SETTINGS PARAMETERS
     let itemsPerRow: CGFloat = 1

@@ -8,16 +8,30 @@
 
 import UIKit
 
+struct Weather {
+    var imageURLString: String
+    var temperature: String
+}
+
 class ViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
+    var weatherForeCast: [Weather]?
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.rowHeight = UITableViewAutomaticDimension
         
-        
         let imageCollectionNib = UINib(nibName: "DetailmageSliderCell", bundle: nil)
         tableView.register(imageCollectionNib, forCellReuseIdentifier: "detailImageCellID")
+        
+        let sunnyWeather = Weather.init(imageURLString: "https://www.wpclipart.com/weather/sun/sun_sharp_rays/sun_spiked_rays_orange.png", temperature: "30 Degrees")
+        
+        let raineyWeather = Weather.init(imageURLString: "https://cdn.pixabay.com/photo/2012/04/18/13/22/cloud-37011_1280.png", temperature: "15 Degrees")
+        
+        let snowyWeather = Weather.init(imageURLString: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Nuvola_weather_snow.svg/1024px-Nuvola_weather_snow.svg.png", temperature: "-1 Degrees")
+        
+        let cloudyWeather = Weather.init(imageURLString: "https://cdn.pixabay.com/photo/2013/04/01/09/22/clouds-98536_1280.png", temperature: "10 Degrees")
+        weatherForeCast = [sunnyWeather, raineyWeather, snowyWeather,cloudyWeather]
         // Do any additional setup after loading the view, typically from a nib.
     }
 
@@ -34,7 +48,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let imageCell = tableView.dequeueReusableCell(withIdentifier: "detailImageCellID", for: indexPath)  as! DetailmageSliderCell
         imageCell.awakeFromNib()
-        imageCell.images = ["https://www.wpclipart.com/weather/sun/sun_sharp_rays/sun_spiked_rays_orange.png", "https://cdn.pixabay.com/photo/2012/04/18/13/22/cloud-37011_1280.png", "https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Nuvola_weather_snow.svg/1024px-Nuvola_weather_snow.svg.png", "https://cdn.pixabay.com/photo/2013/04/01/09/22/clouds-98536_1280.png"]
+        imageCell.weatherForecast = weatherForeCast
         imageCell.separatorInset.left = view.frame.width
         return imageCell
     }

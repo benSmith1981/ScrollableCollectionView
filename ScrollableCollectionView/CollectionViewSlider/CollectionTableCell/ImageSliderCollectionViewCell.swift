@@ -11,6 +11,7 @@ import UIKit
 class ImageSliderCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet var imageVIew: UIImageView!
+    @IBOutlet var titleLabel: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()
